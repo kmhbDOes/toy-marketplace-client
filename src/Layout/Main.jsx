@@ -1,11 +1,14 @@
+import { Outlet } from "react-router-dom";
+import Footer from "../Pages/Shared/Footer";
+import NavBar from "../Pages/Shared/NavBar";
+
 const Main = () => {
   return (
     <div>
+      <NavBar></NavBar>
+      <Outlet></Outlet>
       <h1 className="text-4xl text-red-500">Hello</h1>
-      <p className="bg-purple-400">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus,
-        ea!
-      </p>
+      <Footer></Footer>
     </div>
   );
 };
