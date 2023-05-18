@@ -49,9 +49,11 @@ const NavBar = () => {
             </NavLink>
           </div>
           <div className="flex ml-20 gap-x-3">
-            <button className="btn-outline bg-green-500 hover:bg-green-600 rounded-lg">
-              Log In
-            </button>
+            <Link to="/login">
+              <button className="btn-outline bg-green-500 hover:bg-green-600 rounded-lg">
+                Login
+              </button>
+            </Link>
             <button className=" btn-outline bg-green-500 hover:bg-green-600 rounded-lg">
               Log Out
             </button>
