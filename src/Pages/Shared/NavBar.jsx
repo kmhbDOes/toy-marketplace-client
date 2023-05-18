@@ -6,7 +6,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="px-4  mx-60 sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8  ">
+      <div className="mx-60">
         {/* Navbar */}
         <div className="flex justify-center gap-x-8 items-center text-green-600 py-8 font-semibold">
           <div>
@@ -47,6 +47,14 @@ const NavBar = () => {
             >
               Blog
             </NavLink>
+          </div>
+          <div className="flex ml-20 gap-x-3">
+            <button className="btn-outline bg-green-500 hover:bg-green-600 rounded-lg">
+              Log In
+            </button>
+            <button className=" btn-outline bg-green-500 hover:bg-green-600 rounded-lg">
+              Log Out
+            </button>
           </div>
 
           {/* Mobile Nav */}
@@ -138,6 +146,11 @@ const NavBar = () => {
           </div>
         </div>
       </div>
+      <img
+        className="inline-block md:hidden rounded-lg my-4 mx-auto"
+        src="https://i.ibb.co/M94vpk0/logo-no-background.png"
+        alt=""
+      />
     </>
   );
 };
