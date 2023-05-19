@@ -1,19 +1,48 @@
-import React from "react";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const { handleGoogleSignIn, signIn } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
+  console.log("login page location", location);
+  const from = location.state?.from?.pathname || "/";
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoginError(error.message);
+      });
+  };
+
+  const googleSignIn = () => {
+    handleGoogleSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleLogin}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border w-96 h-full mx-auto my-8 py-8 text-2xl"
       >
         <div class="mb-4 my-4">
@@ -29,7 +58,7 @@ const Login = () => {
             name="email"
             type="text"
             placeholder="Email"
-            requigreen
+            required
           />
         </div>
         <div class="mb-6  my-4">
@@ -45,7 +74,7 @@ const Login = () => {
             type="password"
             name="password"
             placeholder="******************"
-            requigreen
+            required
           />
           {/* Error */}
           <p class="text-green-500 text-xs italic"></p>

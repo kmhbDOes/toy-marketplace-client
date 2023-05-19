@@ -1,10 +1,53 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 const SignUp = () => {
+  const { createUser, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [error, setError] = useState([]);
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const from = location.state?.from?.pathname || "/login";
+    if (password.length < 6) {
+      setError("Password Must be atleast 6 characters");
+    }
+    console.log(email, password, photo, name);
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        navigate(from, { replace: true });
+        console.log(createdUser);
+        updateUserData(result.user, name, photo);
+        logOut();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    const updateUserData = (user, name) => {
+      updateProfile(user, {
+        displayName: name,
+        photoURL: photo,
+      })
+        .then((res) => {
+          console.log("User Updated");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+  };
   return (
     <div class="w-full max-w-xs mx-auto">
-      <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border w-96 h-full mx-auto my-8 py-8 text-2xl">
+      <form
+        onSubmit={handleRegister}
+        class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border w-96 h-full mx-auto my-8 py-8 text-2xl"
+      >
         {/* Input Field from here */}
         <div class="mb-4">
           <label
@@ -20,7 +63,7 @@ const SignUp = () => {
             name="name"
             type="text"
             placeholder="Name"
-            requigreen
+            required
           />
         </div>
         <div class="mb-4">
@@ -33,7 +76,7 @@ const SignUp = () => {
             name="email"
             type="text"
             placeholder="Email"
-            requigreen
+            required
           />
         </div>
         <div class="mb-6">
@@ -49,7 +92,7 @@ const SignUp = () => {
             type="password"
             name="password"
             placeholder="******************"
-            requigreen
+            required
           />
           {/* Show Error */}
           <p class="text-green-500 text-xs italic"></p>
@@ -65,7 +108,7 @@ const SignUp = () => {
             name="photo"
             type="text"
             placeholder="URL"
-            requigreen
+            required
           />
         </div>
         <div class="flex items-center justify-between">
