@@ -9,8 +9,12 @@ const Home = () => {
     <>
       <Banner></Banner>
       <Tabs></Tabs>
-      <SectionOne></SectionOne>
-      <SectionTwo></SectionTwo>
+      <div className="my-24">
+        <SectionOne></SectionOne>
+      </div>
+      <div>
+        <SectionTwo></SectionTwo>
+      </div>
     </>
   );
 };

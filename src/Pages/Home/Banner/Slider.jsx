@@ -69,7 +69,7 @@ const Slider = () => {
       <div className="my-2">
         <img
           className="rounded-lg w-96"
-          src="https://wallpapercave.com/wp/wp9510639.jpg"
+          src="https://images.saymedia-content.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:eco%2Cw_1200/MTc4MDIyNDMzMTE3MTg1NjQ1/good-lego-set-alternatives.jpg"
           alt="Lego Brick Image"
         />
       </div>
