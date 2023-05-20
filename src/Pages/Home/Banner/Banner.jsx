@@ -50,8 +50,8 @@ const Banner = () => {
           </div>
         </div>
         {/* Gallery */}
-        <p className="text-center my-4">
-          See through our gallery for exciting brick models
+        <p className="text-center my-6 text-green-600 font-semibold text-2xl">
+          See through our gallery for exciting brick model cars
         </p>
         <Slider></Slider>
       </div>

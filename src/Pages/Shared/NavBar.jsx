@@ -26,13 +26,13 @@ const NavBar = () => {
                 Home
               </NavLink>
               <NavLink
-                to="/blog"
+                to="/all-toys"
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
                 All Toys
               </NavLink>
               <NavLink
-                to="/"
+                to="/my-toys"
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
                 My Toys
@@ -50,7 +50,7 @@ const NavBar = () => {
           </div>
           <div className="hidden md:flex justify-around  gap-x-5 text-xl">
             <NavLink
-              to="/"
+              to="/add-toy"
               className={({ isActive }) => (isActive ? "active" : "default")}
             >
               Add a toy
@@ -61,9 +61,7 @@ const NavBar = () => {
             >
               Blog
             </NavLink>
-          </div>
-          <div className="flex ml-20 gap-x-3">
-            <div>
+            <div className="hidden md:flex ">
               {user ? (
                 <div className="flex justify-center gap-x-4 mx-4 items-center">
                   <div>
@@ -93,7 +91,7 @@ const NavBar = () => {
           </div>
 
           {/* Mobile Nav */}
-          <div className="lg:hidden">
+          <div className="lg:hidden ml-36">
             <button
               aria-label="Open Menu"
               title="Open Menu"

@@ -77,7 +77,7 @@ const Login = () => {
             required
           />
           {/* Error */}
-          <p class="text-green-500 text-xs italic"></p>
+          <p class="text-red-500 text-xs font-bold">{loginError}</p>
         </div>
         <div class="flex items-center justify-between my-6">
           <button
@@ -114,8 +114,6 @@ const Login = () => {
             Sign Up
           </Link>
         </p>
-
-        <input type="submit" />
       </form>
     </div>
   );
