@@ -12,6 +12,10 @@ const NavBar = () => {
       .catch((error) => console.log(error));
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <div className="mx-60">
@@ -31,12 +35,18 @@ const NavBar = () => {
               >
                 All Toys
               </NavLink>
-              <NavLink
-                to="/my-toys"
-                className={({ isActive }) => (isActive ? "active" : "default")}
-              >
-                My Toys
-              </NavLink>
+              {user ? (
+                <NavLink
+                  to="/my-toys"
+                  className={({ isActive }) =>
+                    isActive ? "active" : "default"
+                  }
+                >
+                  My Toys
+                </NavLink>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="hidden md:flex justify-around gap-x-3 text-xl">
@@ -49,12 +59,16 @@ const NavBar = () => {
             </Link>
           </div>
           <div className="hidden md:flex justify-around  gap-x-5 ">
-            <NavLink
-              to="/add-toy"
-              className={({ isActive }) => (isActive ? "active" : "default")}
-            >
-              Add a toy
-            </NavLink>
+            {user ? (
+              <NavLink
+                to="/add-toy"
+                className={({ isActive }) => (isActive ? "active" : "default")}
+              >
+                Add Toy
+              </NavLink>
+            ) : (
+              ""
+            )}
             <NavLink
               to="/blog"
               className={({ isActive }) => (isActive ? "active" : "default")}
@@ -155,8 +169,42 @@ const NavBar = () => {
                           aria-label="Home"
                           title="Home"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          onClick={closeMenu}
                         >
                           Home
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/all-toys"
+                          aria-label="All Toys"
+                          title="All Toys"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          onClick={closeMenu}
+                        >
+                          All Toys
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/my-toys"
+                          aria-label="Home"
+                          title="Home"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          onClick={closeMenu}
+                        >
+                          My Toys
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/add-toy"
+                          aria-label="add a toy"
+                          title="Add a toy"
+                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          onClick={closeMenu}
+                        >
+                          Add a toy
                         </Link>
                       </li>
                       <li>
@@ -165,6 +213,7 @@ const NavBar = () => {
                           aria-label="Blog"
                           title="Blog"
                           className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                          onClick={closeMenu}
                         >
                           Blog
                         </Link>

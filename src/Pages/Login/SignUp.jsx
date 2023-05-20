@@ -127,7 +127,7 @@ const SignUp = () => {
             </button>
           </div>
           <p className="text-center py-2">
-            RegisteredAlready? <br />
+            Registered Already? <br />
             <Link className="link font-bold text-green-500" to="/login">
               Sign In
             </Link>
