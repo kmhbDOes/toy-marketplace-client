@@ -1,41 +1,45 @@
-import React, { useEffect } from "react";
-import Swiper from "swiper";
-import "swiper/swiper-bundle.css";
+import React, { useState, useEffect } from "react";
 
 const Slider = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   useEffect(() => {
-    const swiper = new Swiper(".swiper-container", {
-      slidesPerView: 1,
-      loop: true,
-      autoplay: {
-        delay: 3000, // Adjust the delay (in milliseconds) between each slide
-        disableOnInteraction: false, // Allow autoplay to continue even when the user interacts with the slider
-      },
-    });
+    const timer = setInterval(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
+    }, 3000); // Adjust the delay (in milliseconds) between each slide transition
 
     return () => {
-      swiper.destroy();
+      clearInterval(timer); // Clean up the timer on component unmount
     };
   }, []);
 
+  const slides = [
+    {
+      id: "slide1",
+      imageSrc:
+        "https://www.lego.com/cdn/cs/set/assets/bltf73564a058fa0425/42151.png",
+    },
+    {
+      id: "slide2",
+      imageSrc:
+        "https://www.lego.com/cdn/cs/set/assets/blt98ab23663c973e9b/42123.jpg",
+    },
+    // Add more slides as needed
+  ];
+
   return (
-    <div className="swiper-container">
-      <div className="swiper-wrapper">
-        <div className="swiper-slide">
-          <img
-            src="https://assetscdn1.paytm.com/images/catalog/product/K/KI/KIDLIMOUSINE-DISKSE1140676506C2066/1565610984539_0..jpg"
-            alt=""
-          />
+    <div className="carousel w-96">
+      {slides.map((slide, index) => (
+        <div
+          key={slide.id}
+          id={slide.id}
+          className={`carousel-item relative w-full ${
+            currentSlide === index ? "block" : "hidden"
+          }`}
+        >
+          <img src={slide.imageSrc} className="w-full" alt="" />
         </div>
-        <div className="swiper-slide">
-          <img
-            src="https://assetscdn1.paytm.com/images/catalog/product/K/KI/KIDLIMOUSINE-DISKSE1140676506C2066/1565610984539_0..jpg"
-            alt=""
-          />
-        </div>
-        <div className="swiper-slide">Slide 3</div>
-        {/* Add more slides as needed */}
-      </div>
+      ))}
     </div>
   );
 };

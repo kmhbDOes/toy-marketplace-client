@@ -4,8 +4,9 @@ import React from "react";
 
 const TabComponent = () => {
   return (
-    <Tabs>
-      <TabList>
+    <Tabs className="my-4">
+      <p className="text-center my-3">Shop By Category</p>
+      <TabList className="w-96 mx-auto">
         <Tab>Title 1</Tab>
         <Tab>Title 2</Tab>
         <Tab>Title 3</Tab>
