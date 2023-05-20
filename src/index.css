@@ -13,6 +13,16 @@ html {
   background: #000;
 }
 
+.login-bg {
+  @apply bg-cover bg-center;
+  background-image: url("https://wallpapercave.com/wp/wp8112238.jpg");
+}
+
+.signup-bg {
+  @apply bg-cover bg-center;
+  background-image: url("https://images.unsplash.com/photo-1602182244320-12e14faa479f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80");
+}
+
 .active {
   @apply tracking-wide text-green-600 font-bold transition-colors duration-200 animate-pulse;
 }

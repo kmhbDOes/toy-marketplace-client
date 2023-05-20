@@ -16,7 +16,7 @@ const NavBar = () => {
     <>
       <div className="mx-60">
         {/* Navbar */}
-        <div className="flex justify-center gap-x-8 items-center text-green-600 py-8 font-semibold">
+        <div className="flex justify-center gap-x-8 items-center text-green-600 py-8 font-semibold text-xl">
           <div>
             <div className="hidden md:flex justify-around gap-x-5 ">
               <NavLink
@@ -48,7 +48,7 @@ const NavBar = () => {
               />
             </Link>
           </div>
-          <div className="hidden md:flex justify-around  gap-x-5 text-xl">
+          <div className="hidden md:flex justify-around  gap-x-5 ">
             <NavLink
               to="/add-toy"
               className={({ isActive }) => (isActive ? "active" : "default")}

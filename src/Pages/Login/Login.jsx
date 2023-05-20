@@ -40,10 +40,10 @@ const Login = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <div>
+    <div className="login-bg py-5">
       <form
         onSubmit={handleLogin}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border w-96 h-full mx-auto my-8 py-8 text-2xl"
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 border w-96 h-full mx-auto my-8 py-8 text-2xl opacity-80"
       >
         <div class="mb-4 my-4">
           <label
