@@ -6,7 +6,7 @@ const TabComponent = () => {
   return (
     <Tabs className="my-4">
       <p className="text-center my-3">Shop By Category</p>
-      <TabList className="w-96 mx-auto">
+      <TabList className="w-96 mx-auto border-4 border-green-600">
         <Tab>Title 1</Tab>
         <Tab>Title 2</Tab>
         <Tab>Title 3</Tab>

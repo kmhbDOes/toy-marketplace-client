@@ -7,3 +7,9 @@ html {
   margin: 0;
   padding: 0;
 }
+
+.banner {
+  @apply bg-cover bg-center;
+  /* background-image: url("https://cdn.pixabay.com/photo/2015/04/10/00/41/food-715542_960_720.jpg"); */
+  background-color: black;
+}

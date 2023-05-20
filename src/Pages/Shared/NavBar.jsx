@@ -21,7 +21,7 @@ const NavBar = () => {
                 to="/blog"
                 className={({ isActive }) => (isActive ? "active" : "default")}
               >
-                Blog
+                All Toys
               </NavLink>
             </div>
           </div>
@@ -39,7 +39,13 @@ const NavBar = () => {
               to="/"
               className={({ isActive }) => (isActive ? "active" : "default")}
             >
-              Home
+              My Toys
+            </NavLink>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "active" : "default")}
+            >
+              Add a toy
             </NavLink>
             <NavLink
               to="/blog"
