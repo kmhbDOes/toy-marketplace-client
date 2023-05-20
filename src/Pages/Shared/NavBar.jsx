@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
 
   return (
     <>
@@ -55,14 +63,33 @@ const NavBar = () => {
             </NavLink>
           </div>
           <div className="flex ml-20 gap-x-3">
-            <Link to="/login">
-              <button className="btn-outline bg-green-500 hover:bg-green-600 rounded-lg">
-                Login
-              </button>
-            </Link>
-            <button className=" btn-outline bg-green-500 hover:bg-green-600 rounded-lg">
-              Log Out
-            </button>
+            <div>
+              {user ? (
+                <div className="flex justify-center gap-x-4 mx-4 items-center">
+                  <div>
+                    {user.photoURL ? (
+                      <img
+                        className="w-10 h-10 rounded-full hover:opacity-30"
+                        src={user.photoURL}
+                        title={user.displayName}
+                        alt="img"
+                      />
+                    ) : (
+                      "photo"
+                    )}
+                  </div>
+                  <div>
+                    <button className="btn-rec" onClick={handleLogOut}>
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <Link to="/login">
+                  <button className="btn-rec">Login</button>
+                </Link>
+              )}
+            </div>
           </div>
 
           {/* Mobile Nav */}
@@ -143,6 +170,37 @@ const NavBar = () => {
                         >
                           Blog
                         </Link>
+                      </li>
+
+                      <li>
+                        {user ? (
+                          <div className="flex justify-center gap-x-4 mx-4 items-center">
+                            <div>
+                              {user.photoURL ? (
+                                <img
+                                  className="w-10 h-10 rounded-full hover:opacity-30"
+                                  src={user.photoURL}
+                                  title={user.displayName}
+                                  alt="img"
+                                />
+                              ) : (
+                                "Image Unavailable"
+                              )}
+                            </div>
+                            <div>
+                              <button
+                                className="btn-rec"
+                                onClick={handleLogOut}
+                              >
+                                Logout
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <Link to="/login">
+                            <button className="btn-rec">Login</button>
+                          </Link>
+                        )}
                       </li>
 
                       {/* Lists ends here */}

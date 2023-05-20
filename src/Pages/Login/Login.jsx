@@ -96,7 +96,7 @@ const Login = () => {
         <div className="flex justify-center py-2 gap-x-4">
           {/* Google sign in */}
           <div>
-            <Link to="">
+            <Link onClick={googleSignIn} to="">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
