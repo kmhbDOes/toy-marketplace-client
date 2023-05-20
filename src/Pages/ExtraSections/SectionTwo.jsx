@@ -7,7 +7,7 @@ const SectionTwo = () => {
         <p className="text-3xl text-center py-2 font-semibold">
           Sponsored Companies
         </p>
-        <div className="py-6 flex flex-col md:flex-row justify-center items-center gap-x-6 gap-y-4 font-bold text-2xl ">
+        <div className="py-6 flex flex-col md:flex-row justify-center items-center gap-x-6 font-bold text-2xl ">
           <div>
             <img
               className="rounded w-56 h-56 mx-auto hover:opacity-70"

@@ -43,7 +43,7 @@ const SignUp = () => {
     };
   };
   return (
-    <div className="signup-bg  py-4 ">
+    <div className="signup-bg  py-4 mt-16">
       <div class="w-full max-w-xs mx-auto ">
         <form
           onSubmit={handleRegister}
