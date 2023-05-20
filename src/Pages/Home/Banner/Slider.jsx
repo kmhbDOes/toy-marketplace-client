@@ -27,7 +27,7 @@ const Slider = () => {
     {
       id: "slide3",
       imageSrc:
-        "https://cdn.shopify.com/s/files/1/0558/1402/9359/products/2716-piece-lego-technic-alternative-delorean-dmc-model-set-car-theblockarmy_300x.jpg?v=1654091569",
+        "https://cdn.shopify.com/s/files/1/0011/6218/2714/products/lego-city-electric-sports-car-60383_009_1024x1024@2x.jpg?v=1672388265",
     },
     {
       id: "slide4",
@@ -39,35 +39,39 @@ const Slider = () => {
       imageSrc:
         "https://jaysbrickblog.com/wp-content/uploads/2023/03/LEGO-76914-Ferrari-Competizione-%E2%80%93-Main-Model-1400x996.jpg",
     },
+    {
+      id: "slide6",
+      imageSrc:
+        "https://www.lego.com/cdn/cs/set/assets/blt5014244d8d8dc8ad/42154.png",
+    },
     // Add more slides as needed
   ];
 
   return (
-    <div className="flex flex-col md:flex-row items-center mx-24">
-      <div className="carousel w-full mx-auto">
+    <div className="flex flex-col md:flex-row items-center mx-24 ">
+      <div className="carousel mx-auto">
         {slides.map((slide, index) => (
           <div
             key={slide.id}
             id={slide.id}
-            className={`carousel-item relative w-full ${
+            className={`carousel-item relative ${
               currentSlide === index ? "block" : "hidden"
             }`}
           >
             <img
               src={slide.imageSrc}
-              className="w-64 h-64  md:w-96 md:h-96"
+              className="w-72 md:w-full h-full  md:h-96"
               alt=""
             />
           </div>
         ))}
       </div>
-      <div>
-        <video autoPlay controls={false} className="rounded-lg">
-          <source
-            src="https://www.lego.com/cdn/cs/set/assets/blt18afdaa7957d59b2/Desktop_Motion_banner_v1_high.mp4"
-            type="video/mp4"
-          />
-        </video>
+      <div className="my-2">
+        <img
+          className="rounded-lg w-96"
+          src="https://wallpapercave.com/wp/wp9510639.jpg"
+          alt="Lego Brick Image"
+        />
       </div>
     </div>
   );

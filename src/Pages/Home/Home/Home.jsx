@@ -1,4 +1,6 @@
 import React from "react";
+import SectionOne from "../../ExtraSections/SectionOne";
+import SectionTwo from "../../ExtraSections/SectionTwo";
 import Banner from "../Banner/Banner";
 import Tabs from "../Tabs/Tabs";
 
@@ -7,6 +9,8 @@ const Home = () => {
     <>
       <Banner></Banner>
       <Tabs></Tabs>
+      <SectionOne></SectionOne>
+      <SectionTwo></SectionTwo>
     </>
   );
 };
