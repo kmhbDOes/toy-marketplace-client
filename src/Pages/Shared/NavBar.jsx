@@ -186,26 +186,34 @@ const NavBar = () => {
                         </Link>
                       </li>
                       <li>
-                        <Link
-                          to="/my-toys"
-                          aria-label="Home"
-                          title="Home"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          onClick={closeMenu}
-                        >
-                          My Toys
-                        </Link>
+                        {user ? (
+                          <Link
+                            to="/my-toys"
+                            aria-label="Home"
+                            title="Home"
+                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            onClick={closeMenu}
+                          >
+                            My Toys
+                          </Link>
+                        ) : (
+                          ""
+                        )}
                       </li>
                       <li>
-                        <Link
-                          to="/add-toy"
-                          aria-label="add a toy"
-                          title="Add a toy"
-                          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                          onClick={closeMenu}
-                        >
-                          Add a toy
-                        </Link>
+                        {user ? (
+                          <Link
+                            to="/add-toy"
+                            aria-label="add a toy"
+                            title="Add a toy"
+                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                            onClick={closeMenu}
+                          >
+                            Add a toy
+                          </Link>
+                        ) : (
+                          ""
+                        )}
                       </li>
                       <li>
                         <Link

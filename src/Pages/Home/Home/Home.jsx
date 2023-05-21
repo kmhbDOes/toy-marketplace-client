@@ -12,13 +12,13 @@ const Home = () => {
       setLoading(false);
     }, 500);
   }, []);
+
   return (
     <>
       {loading ? (
         <Spinner></Spinner>
       ) : (
         <>
-          {" "}
           <Banner></Banner>
           <Tabs></Tabs>
           <div className="my-24">

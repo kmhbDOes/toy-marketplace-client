@@ -1,123 +1,181 @@
-// /* eslint-disable no-unused-vars */
-// import React, { useContext, useState } from "react";
-// import { useForm } from "react-hook-form";
-// import CreatableSelect from "react-select/creatable";
+import React from "react";
+import Swal from "sweetalert2";
 
-// const AddToy = () => {
-//   const { user } = useContext(AuthContext);
-//   const [selectedOption, setSelectedOption] = useState(null);
+const AddToy = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const toyPhoto = form.toyPhoto.value;
+    const toyName = form.toyName.value;
+    const sellerName = form.sellerName.value;
+    const sellerEmail = form.sellerEmail.value;
+    const category = form.category.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const quantity = form.quantity.value;
+    const description = form.description.value;
 
-//   const {
-//     register,
-//     handleSubmit,
-//     watch,
-//     formState: { errors },
-//   } = useForm();
-//   const onSubmit = (data) => {
-//     data.skills = selectedOption;
+    const inputs = {
+      toyPhoto,
+      toyName,
+      sellerName,
+      sellerEmail,
+      category,
+      price,
+      rating,
+      quantity,
+      description,
+    };
 
-//     fetch("http://localhost:5000/post-job", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify(data),
-//     })
-//       .then((res) => res.json())
-//       .then((result) => {
-//         console.log(result);
-//       });
-//     console.log(data);
-//   };
-//   const options = [
-//     { value: "JavaScript", label: "JavaScript" },
-//     { value: "C++", label: "C++" },
-//     { value: "HTML", label: "HTML" },
-//     { value: "CSS", label: "CSS" },
-//     { value: "React", label: "React" },
-//     { value: "Node", label: "Node" },
-//     { value: "MongoDB", label: "MongoDB" },
-//     { value: "Redux", label: "Redux" },
-//   ];
-//   //   console.log(user);
-//   return (
-//     <div className="">
-//       <div className="add-job row">
-//         <div className="col-md-8">
-//           <form onSubmit={handleSubmit(onSubmit)}>
-//             {errors.exampleRequired && <span>This field is required</span>}
-//             <input
-//               className=""
-//               {...register("title")}
-//               placeholder="title"
-//               defaultValue="Web developer"
-//             />
+    console.log(inputs);
 
-//             <input
-//               className=""
-//               {...register("salary", { required: true })}
-//               placeholder="salary"
-//               defaultValue="30k"
-//             />
-//             <input
-//               className=""
-//               {...register("vacancy", { required: true })}
-//               placeholder="vacancy"
-//               type="number"
-//             />
-//             <select className="" {...register("category")}>
-//               <option value="Engineering">engineering</option>
-//               <option value="Editor">Editor</option>
-//               <option value="writer">Writer</option>
-//               <option value="Developer">Developer</option>
-//             </select>
-//             <select className="" {...register("status")}>
-//               <option value="remote">Remote</option>
-//               <option value="offline">Offline</option>
-//             </select>
-//             <input
-//               className=""
-//               {...register("image")}
-//               placeholder="image link"
-//               type="url"
-//               defaultValue="https://images.pexels.com/photos/2528118/pexels-photo-2528118.jpeg?auto=compress&cs=tinysrgb&w=600"
-//             />
-//             <input
-//               className=""
-//               {...register("deadline")}
-//               placeholder="deadline"
-//               type="date"
-//             />
-//             <input
-//               className=""
-//               value={user?.email}
-//               {...register("postedBy")}
-//               placeholder="your email"
-//               type="email"
-//             />
-//             <CreatableSelect
-//               className="w-75"
-//               defaultValue={selectedOption}
-//               onChange={setSelectedOption}
-//               options={options}
-//               isMulti
-//             />
-//             <input
-//               className="text-input"
-//               {...register("description")}
-//               placeholder="description"
-//             />
-//             <input className="" value="Post Job" type="submit" />
-//           </form>
-//         </div>
-//         <div className="col-md-4">
-//           <img
-//             className="w-100"
-//             src="https://i.ibb.co/rthZ75K/pngtree-job-vacancy-with-join-our-team-recruitment-vector-design-png-image-6419066-removebg-preview.png"
-//             alt=""
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+    //Send data to server
+    fetch("http://localhost:5000/newtoy", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(inputs),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Do you want to continue",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
 
-// export default AddToy;
+  return (
+    <div>
+      <h2 className="text-center text-3xl">Book Service: </h2>
+      <form onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 gap-6">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Toy Photo</span>
+            </label>
+            <input
+              type="text"
+              defaultValue=""
+              name="toyPhoto"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Toy Name</span>
+            </label>
+            <input
+              type="text"
+              defaultValue=""
+              name="toyName"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Seller Name</span>
+            </label>
+            <input
+              type="text"
+              name="sellerName"
+              //   defaultValue={user?.email}
+              placeholder="Seller Name"
+              className="input input-bordered"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="text"
+              //   defaultValue={"$" + "price"}
+              className="input input-bordered"
+              placeholder="Seller Email"
+              name="sellerEmail"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Category</span>
+            </label>
+            <input
+              type="text"
+              name="category"
+              //   defaultValue={user?.email}
+              placeholder="category"
+              className="input input-bordered"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Price</span>
+            </label>
+            <input
+              type="text"
+              name="price"
+              //   defaultValue={user?.email}
+              placeholder="price"
+              className="input input-bordered"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Rating</span>
+            </label>
+            <input
+              type="text"
+              name="rating"
+              //   defaultValue={user?.email}
+              placeholder="Rating"
+              className="input input-bordered"
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Quantity</span>
+            </label>
+            <input
+              type="text"
+              name="quantity"
+              //   defaultValue={user?.email}
+              placeholder="Quantity"
+              className="input input-bordered"
+            />
+          </div>
+        </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Description</span>
+          </label>
+          <input
+            type="text"
+            name="description"
+            //   defaultValue={user?.email}
+            placeholder="Description"
+            className="input input-bordered"
+          />
+        </div>
+        <div className="form-control mt-6">
+          <input
+            className="btn btn-primary btn-block"
+            type="submit"
+            value="Add Toy"
+          />
+        </div>
+      </form>
+      <div className="card-body"></div>
+    </div>
+  );
+};
+
+export default AddToy;
