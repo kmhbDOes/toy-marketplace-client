@@ -3,14 +3,12 @@ import React, { useState, useEffect } from "react";
 const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredToys, setFilteredToys] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5000/allToy")
       .then((res) => res.json())
       .then((result) => {
         setToys(result);
-        setFilteredToys(result);
       });
   }, []);
 
@@ -18,29 +16,22 @@ const AllToys = () => {
     setSearchQuery(event.target.value);
   };
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    const query = searchQuery.trim().toLowerCase();
-    const filteredResults = toys.filter((toy) =>
-      toy.toyName.toLowerCase().includes(query)
-    );
-    setFilteredToys(filteredResults);
-  };
+  const filteredToys = toys.filter((toy) =>
+    toy.toyName.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   return (
     <div className="text-center">
-      <form onSubmit={handleSearchSubmit}>
-        <input
-          type="text"
-          placeholder="Search here"
-          className="input border-4 border-green-600 w-96 my-4"
-          value={searchQuery}
-          onChange={handleSearch}
-        />
-        <button type="submit" className="btn btn-primary">
-          Search
-        </button>
-      </form>
+      <input
+        type="text"
+        placeholder="Search here"
+        className="input border-4 border-green-600 w-96 my-4"
+        value={searchQuery}
+        onChange={handleSearch}
+      />
+      <button type="submit" className="btn btn-primary text-green-500 text-3xl">
+        Search
+      </button>
       <div className="table-responsive">
         <table className="table-container mx-auto my-4">
           <thead className="px-5">
