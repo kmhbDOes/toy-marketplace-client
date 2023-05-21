@@ -30,7 +30,7 @@ const AddToy = () => {
     console.log(inputs);
 
     //Send data to server
-    fetch("http://localhost:5000/newtoy", {
+    fetch("https://toy-marketplace-server-xi-puce.vercel.app/newtoy", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -7,7 +7,7 @@ const AllToys = () => {
   const [filteredToys, setFilteredToys] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allToy")
+    fetch("https://toy-marketplace-server-xi-puce.vercel.app/allToy")
       .then((res) => res.json())
       .then((result) => {
         setToys(result);
