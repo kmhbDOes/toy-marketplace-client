@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
@@ -37,7 +38,7 @@ const AllToys = () => {
           value={searchQuery}
           onChange={handleSearch}
         />
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary bg-green-600">
           Search
         </button>
       </form>
@@ -62,9 +63,11 @@ const AllToys = () => {
                 <td>{toy.price} $</td>
                 <td>{toy.quantity} pcs</td>
                 <td>
-                  <button className="btn btn-primary bg-green-600 hover:bg-green-800">
-                    Details
-                  </button>
+                  <Link to={`/all-toys/${toy._id}`}>
+                    <button className="btn btn-primary bg-green-600 hover:bg-green-800">
+                      Details
+                    </button>
+                  </Link>
                 </td>
               </tr>
             ))}
