@@ -30,3 +30,18 @@ html {
 .default {
   @apply tracking-wide text-gray-700 transition-colors duration-200 hover:text-gray-600;
 }
+
+/* Default styling */
+.table-container {
+  width: 100%;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 600px) {
+  .table-container {
+    overflow-x: auto;
+  }
+  .table-container table {
+    width: auto;
+  }
+}

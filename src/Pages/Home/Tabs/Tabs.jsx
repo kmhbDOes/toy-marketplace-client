@@ -8,14 +8,14 @@ const TabComponent = () => {
       <p className="text-center my-6 font-semibold  text-green-600 text-2xl">
         Shop By Category
       </p>
-      <TabList className="w-96 mx-auto border-4 border-green-600">
+      <TabList className="w-96 mx-auto border-4 shadow-lg rounded-lg">
         <Tab>Title 1</Tab>
         <Tab>Title 2</Tab>
         <Tab>Title 3</Tab>
       </TabList>
 
       <TabPanel className="">
-        <h2>Any content 1</h2>
+        <div className="mx-auto">Content One</div>
       </TabPanel>
       <TabPanel>
         <h2>Any content 2</h2>
