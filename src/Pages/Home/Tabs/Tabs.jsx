@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
@@ -21,7 +22,7 @@ const TabComponent = () => {
       <p className="text-center my-6 font-semibold text-green-600 text-2xl">
         Shop By Category
       </p>
-      <TabList className="w-96 mx-auto border-4 shadow-lg rounded-lg">
+      <TabList className="w-96 mx-auto border-4 border-green-500 shadow-lg rounded-lg">
         {categories.map((category) => (
           <Tab key={category}>{category}</Tab>
         ))}
@@ -36,7 +37,7 @@ const TabComponent = () => {
               .map((toy) => (
                 <div key={toy._id} className="card mx-4 my-4">
                   {/* Additional card content */}
-                  <div className="card w-96 bg-base-100 shadow-xl image-full">
+                  <div className="card w-96 h-96 bg-base-100 shadow-xl image-full">
                     <figure>
                       <img src={toy.toyPhoto} alt="photo" />
                     </figure>
@@ -45,9 +46,11 @@ const TabComponent = () => {
                       <p>Price: {toy.price} $</p>
                       <p>Rating: {toy.rating} </p>
                       <div className="card-actions justify-end">
-                        <button className="btn btn-primary bg-green-600 hover:bg-green-700">
-                          View Details
-                        </button>
+                        <Link to={`/all-toys/${toy._id}`}>
+                          <button className="btn btn-primary bg-green-600 hover:bg-green-700">
+                            View Details
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
